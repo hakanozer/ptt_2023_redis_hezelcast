@@ -9,6 +9,7 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -26,6 +27,15 @@ public class ProductService {
     @Cacheable(value = "productx")
     public List<Product> all() {
         return productRepository.findAll();
+    }
+    @CacheEvict(value = "productx", allEntries = true)
+    public void delete(Long pid) {
+        try {
+            Optional<Product> optionalProduct = productRepository.findById(pid);
+            if (optionalProduct.isPresent()) {
+                productRepository.deleteById(pid);
+            }
+        }catch (Exception ex) {}
     }
 
 }
