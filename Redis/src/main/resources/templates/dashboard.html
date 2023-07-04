@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -39,16 +39,16 @@
                     <th scope="col">Delete</th>
                 </tr>
                 </thead>
-                <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>mdo</td>
-                    <td>
-                        <button class="btn btn-danger btn-sm">Delete</button>
-                    </td>
-                </tr>
+                <tbody th:if="${allProduct != null}">
+                    <tr th:each="item : ${allProduct}">
+                        <th scope="row" th:text="${item.pid}"></th>
+                        <td th:text="${item.title}"></td>
+                        <td th:text="${item.detail}"></td>
+                        <td th:text="${item.price}"></td>
+                        <td>
+                            <button class="btn btn-danger btn-sm">Delete</button>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>
