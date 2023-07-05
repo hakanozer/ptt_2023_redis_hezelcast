@@ -25,4 +25,9 @@ public class AdminService {
         return status;
     }
 
+    public void logout() {
+        request.getSession().removeAttribute("admin");
+        request.changeSessionId();
+    }
+
 }

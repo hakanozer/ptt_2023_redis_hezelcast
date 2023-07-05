@@ -31,6 +31,8 @@ public class FilterConfig implements Filter {
                 // session fail
                 res.sendRedirect("/");
             }else {
+                String email = (String) req.getSession().getAttribute("admin");
+                req.setAttribute("email", email);
                 filterChain.doFilter(req, res);
             }
         }else {

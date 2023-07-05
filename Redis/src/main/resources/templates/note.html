@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Dashboard</title>
+    <title>Note</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </head>
@@ -14,42 +14,40 @@
     <th:block th:replace="inc/navbar"></th:block>
     <div class="row">
         <div class="col-sm-6">
-            <h2>Product Add</h2>
-            <form action="/productAdd" method="post">
+            <h2>Note Add</h2>
+            <form action="/noteAdd" method="post">
                 <div class="mb-3">
-                    <input name="title" class="form-control" placeholder="Title" />
+                    <input name="title" class="form-control" placeholder="Title"/>
                 </div>
                 <div class="mb-3">
-                    <input name="detail" class="form-control" placeholder="Detail" />
+                    <input name="detail" class="form-control" placeholder="Detail"/>
                 </div>
                 <div class="mb-3">
-                    <input type="number" name="price" class="form-control" placeholder="Price" />
+                    <input name="color" type="color" class="form-control" placeholder="Color"/>
                 </div>
-                <button class="btn btn-success">Send</button>
+                <button class="btn btn-success">Save</button>
             </form>
         </div>
         <div class="col-sm-6">
-            <h2>Product List</h2>
+            <h2>Note List</h2>
             <table class="table table-hover">
                 <thead>
                 <tr>
-                    <th scope="col">#id</th>
+                    <th scope="col">#ID</th>
                     <th scope="col">Title</th>
                     <th scope="col">Detail</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Delete</th>
+                    <th scope="col">Color</th>
                 </tr>
                 </thead>
-                <tbody th:if="${allProduct != null}">
-                    <tr th:each="item : ${allProduct}">
-                        <th scope="row" th:text="${item.pid}"></th>
-                        <td th:text="${item.title}"></td>
-                        <td th:text="${item.detail}"></td>
-                        <td th:text="${item.price}"></td>
-                        <td>
-                            <a th:href="${'/delete/'+item.pid}" class="btn btn-danger btn-sm">Delete</a>
-                        </td>
-                    </tr>
+                <tbody>
+
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                </tr>
+
                 </tbody>
             </table>
         </div>
