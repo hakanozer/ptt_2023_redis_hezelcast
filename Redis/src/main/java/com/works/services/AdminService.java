@@ -20,7 +20,7 @@ public class AdminService {
         boolean status = optionalAdmin.isPresent();
         if ( status ) {
             Admin adm = optionalAdmin.get();
-            request.getSession().setAttribute("admin", adm );
+            request.getSession().setAttribute("admin", adm.getEmail() );
         }
         return status;
     }

@@ -14,8 +14,31 @@ public class FilterConfig implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) servletRequest;
         HttpServletResponse res = (HttpServletResponse) servletResponse;
-        System.out.println(" This Line Call ");
-        filterChain.doFilter(req, res);
+
+        String url = req.getRequestURI();
+        String[] freeUrls = {"/", "/login"};
+        boolean sessionStatus = true;
+        for ( String item : freeUrls ) {
+            if (item.equals(url)) {
+                sessionStatus = false;
+                break;
+            }
+        }
+
+        if ( sessionStatus ) {
+            boolean loginStatus = req.getSession().getAttribute("admin") == null;
+            if (loginStatus) {
+                // session fail
+                res.sendRedirect("/");
+            }else {
+                filterChain.doFilter(req, res);
+            }
+        }else {
+            filterChain.doFilter(req, res);
+        }
+
+
+
     }
 
 }
