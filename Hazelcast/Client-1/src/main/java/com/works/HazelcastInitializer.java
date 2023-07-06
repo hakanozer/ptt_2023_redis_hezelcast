@@ -8,11 +8,9 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class HazelcastInitializer {
-
-    public HazelcastInitializer() {
+    public HazelcastInitializer(){
         HazelcastListener hazelcastListener = new HazelcastListener();
-        Config config = new Config();
-        HazelcastInstance hz = Hazelcast.newHazelcastInstance(config);
+        HazelcastInstance hz= Hazelcast.newHazelcastInstance();
         ITopic<String> iTopic = hz.getTopic("ptt_topic");
         iTopic.addMessageListener(hazelcastListener);
     }

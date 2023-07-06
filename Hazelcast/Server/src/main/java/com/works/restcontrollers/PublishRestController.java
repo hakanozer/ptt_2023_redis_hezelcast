@@ -12,12 +12,11 @@ import java.util.UUID;
 public class PublishRestController {
 
     final HazelcastService hazelcastService;
-
+    
     @GetMapping("/publish")
-    public String publish() {
+    public String publish(){
         String uuid = UUID.randomUUID().toString();
         hazelcastService.send(uuid);
-        return "send..";
+        return "..Send";
     }
-
 }
