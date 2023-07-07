@@ -2,10 +2,10 @@ package com.works.projections;
 
 public interface IBook {
 
-    Long getBid();
-    Integer getPageNumbers();
-    String getTitle();
+    Long getBId();
+    Integer getPage_Numbers();
+    String getTItle();
     String getName();
-    String getBio();
+    String getBIo();
 
 }

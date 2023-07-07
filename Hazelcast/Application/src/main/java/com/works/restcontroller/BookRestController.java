@@ -1,6 +1,7 @@
 package com.works.restcontroller;
 
 import com.works.entities.Book;
+import com.works.entities.BookAuthorJoin;
 import com.works.services.BookService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,7 +23,7 @@ public class BookRestController {
     }
 
     @GetMapping("/bookList")
-    public Object bookList() {
+    public List<BookAuthorJoin> bookList() {
         return bookService.books();
     }
 
